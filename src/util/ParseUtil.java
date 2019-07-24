@@ -44,14 +44,16 @@ public class ParseUtil {
             System.out.println(" ");
         }
         System.out.println(array.size());
-        for(JsonType list : fire){
-            if(list.getObject().toString().contains("FinKA--")){
-                output += list.getObject()+",";
+        for(int i=0;i<fire.size();i++) {
+            if(fire.get(i).getObject().toString().contains("FinKA--")){
+                output += fire.get(i).getObject();
+                if(i < fire.size()){
+                    output += ",";
+                }
             }
         }
         output += "]";
-        System.out.println(output);
-        ioUtil.commonOutput(output, "LogWeaponFireCount.txt");
+        ioUtil.commonOutput(output, "LogWeaponFireCount_FinKA.txt");
         return typeList;
     }
 }

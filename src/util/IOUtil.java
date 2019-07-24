@@ -28,6 +28,7 @@ public class IOUtil {
             fileName = outFile;
         OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(outPath + File.separator + fileName));
         osw.write(prettyJson);
+        osw.close();
     }
 
     public void slice() throws IOException {
