@@ -23,13 +23,15 @@ public class IOUtil {
         return new InputStreamReader(new FileInputStream(jsonPath));
     }
 
-    private void commonOutput(String prettyJson) throws IOException {
-        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(outPath + File.separator + outFile));
+    public void commonOutput(String prettyJson, String fileName) throws IOException {
+        if(fileName.isEmpty())
+            fileName = outFile;
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(outPath + File.separator + fileName));
         osw.write(prettyJson);
     }
 
     public void slice() throws IOException {
-        commonOutput(prettyPrint(isReaderToString(commonInput())));
+        commonOutput(prettyPrint(isReaderToString(commonInput())), "");
     }
 
     private String isReaderToString(InputStreamReader reader) throws IOException {
